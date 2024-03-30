@@ -1,2 +1,3 @@
-# Communications-Systems
-Mini-projects and labs related to Communication Systems
+# ECE-Related
+Mini-projects and labs related to Signals and Systems, Control Systmes, Communication Systems, etc...  
+Mainly Implemented in MATLAB
