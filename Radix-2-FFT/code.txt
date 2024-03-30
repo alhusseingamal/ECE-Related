@@ -1,0 +1,35 @@
+clc
+
+a = -10;
+b = 10;
+n = 8; 
+X = randi([a b], 1, n); 
+N = seqperiod(X); 
+a = zeros(1,n);
+%----------------
+omega = (2 * pi) / N; % get the frequency
+t1 = cputime;
+for k = 1 : N
+    for m = 1 : N
+        a(k) = a(k) + X(m) * exp(-1i * (k - 1) * omega * (m - 1)); % direct substitution in the equation
+    end
+end
+t1 = cputime - t1;
+
+t2 = cputime;
+Y = fft(X); % matlab command
+t2 = cputime - t2;
+
+t3 = cputime;
+Z = FFT_DIT_R2(X); % our implemented function
+t3 = cputime - t3;
+
+disp(X)
+disp(a)
+disp(Y)
+disp(Z)
+disp(t1) % computational time using equation
+disp(t2) % computational time using the Matlab command FFT
+disp(t3) % computational time using our implementation of radix-2 FFT DIT
+% all computational times calculated are in seconds.
+
